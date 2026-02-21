@@ -264,18 +264,26 @@ function setupMapInteractions() {
 
 // ৭. ডার্ক মোড এবং ইনিশিয়ালাইজেশন
 document.addEventListener('DOMContentLoaded', () => {
-   // ডার্ক মোড হ্যান্ডলার
-   const toggleBtn = document.getElementById('dark-mode-toggle');
-   if (localStorage.getItem('dark-mode') === 'enabled') {
-      document.body.classList.add('dark-mode');
-   }
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const body = document.body;
 
-   if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-         document.body.classList.toggle('dark-mode');
-         localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-      });
-   }
+    if (!toggleBtn) return;
+
+    // ফাংশন: মোড পরিবর্তন
+    const toggleMode = (e) => {
+        e.preventDefault(); // ডাবল ক্লিক বা জুম প্রিভেন্ট করবে
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+    };
+
+    // মোবাইল এবং ডেস্কটপ উভয়ের জন্য ইভেন্ট লিসেনার
+    toggleBtn.addEventListener('click', toggleMode);
+    
+    // আগের সেটিং চেক
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
 
    // ডাটা লোড
    processedDataGlobal = getProcessedData();

@@ -213,56 +213,36 @@ body {
 
 /* Floating Button Styles */
 .floating-toggle {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background: #15803d;
-	/* আপনার সাইটের থিম কালার */
-	color: white;
-	border: none;
-	cursor: pointer;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 24px;
-	z-index: 1000;
-	transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.floating-toggle:hover {
-	transform: scale(1.1);
-}
-
-.floating-toggle:active {
-	transform: scale(0.9);
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #15803d; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    z-index: 9999; 
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* আইকন কন্ট্রোল */
-.icon-moon {
-	display: none;
-}
+.icon-moon { display: none; }
+.icon-sun { display: block; }
 
-.icon-sun {
-	display: block;
-}
-
-/* ডার্ক মোড একটিভ হলে আইকন চেঞ্জ */
-body.dark-mode .icon-sun {
-	display: none;
-}
-
-body.dark-mode .icon-moon {
-	display: block;
-}
+body.dark-mode .icon-sun { display: none; }
+body.dark-mode .icon-moon { display: block; }
 
 body.dark-mode .floating-toggle {
-	background: #1e293b;
-	/* ডার্ক মোডে বাটনের ব্যাকগ্রাউন্ড */
-	border: 1px solid #334155;
+    background: #1e293b;
+    border: 1px solid #334155;
 }
 
 /* =============================================

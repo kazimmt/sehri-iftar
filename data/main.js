@@ -100,7 +100,7 @@
                         if (tomRow) {
                             const [tsH, tsM] = toEnglishNumber(tomRow.sahri).split(':').map(Number);
                             targetTime = new Date(tomorrow); targetTime.setHours(tsH, tsM, 0);
-                            eventLabel = "আগামী সাহরী"; displayTime = tomRow.sahri + " AM";
+                            eventLabel = "সাহরী শেষ"; displayTime = tomRow.sahri + " AM";
                         }
                     }
                 }
@@ -274,5 +274,6 @@
             updateHeaderDates();
             renderTable('dhaka', processedDataGlobal);
             setupMapInteractions();
+
 
         });

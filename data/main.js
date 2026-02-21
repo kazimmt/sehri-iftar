@@ -1,22 +1,26 @@
-        // Print Handler function for reliability
+        // Reliability improved Print Handler
 
         function handlePrint() {
 
-            // Update site URL before printing
+            try {
 
-            const siteUrl = window.location.hostname || "kazimmt.github.io/sehri-iftar";
+                const siteUrl = window.location.hostname || "kazimmt.github.io/sehri-iftar";
 
-            document.getElementById('site-url-placeholder').textContent = siteUrl;
+                const placeholder = document.getElementById('site-url-placeholder');
 
-            
+                if (placeholder) placeholder.textContent = siteUrl;
 
-            // Short delay to ensure DOM updates before browser takes control
+                
 
-            setTimeout(() => {
+                window.focus();
 
                 window.print();
 
-            }, 100);
+            } catch (error) {
+
+                console.error("প্রিন্ট করতে সমস্যা হচ্ছে:", error);
+
+            }
 
         }
 

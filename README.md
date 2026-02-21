@@ -1,7 +1,7 @@
 <H1 align="center"> 🌙 Ramadan Calendar 2026 – Bangladesh</H1>
 
 <p align="center">
-  <b>A Modern District-Based Ramadan Timetable Web App</b>
+  <b>A Modern District-Based Ramadan Timetable Web App</b><br/>
 </p>
 
 <p align="center">
@@ -39,7 +39,6 @@ It combines clean UI design, smart search functionality, real-time countdown log
 ### 📅 Complete Ramadan Schedule
 - Full 30-day Ramadan timetable
 - Sehri & Iftar times clearly displayed
-- Highlighted current day
 - Clean tabular layout for readability
 
 ### ⏳ Live Countdown System
@@ -81,18 +80,6 @@ Modern spacing, readable typography, and smooth layout structure.
 - Accessible contrast and readability
 - Smooth hover and focus effects
 - Clean typography hierarchy
-
----
-
-## 🛠 Tech Stack
-
-- React
-- Vite
-- Tailwind CSS
-- Headless UI
-- JavaScript (ES6+)
-- Progressive Web App (PWA)
-- GitHub Pages Deployment
 
 ---
 
@@ -140,16 +127,17 @@ https://kazimmt.github.io/sehri-iftar/
 
 ## 👨‍💻 Developers
 
-<p>
-<i>Feature Enhancements and Developer:</i><br> 
-<b>Sajjad Hossain Soykot</b><br/>
-  <a href="https://github.com/SajjadHossainSoykot">@SajjadHossainSoykot</a>
-</p>
 
 <p>
 <i>Designer and Intial Version:</i><br>
 <b>Kazi Tuhin</b><br/>
   <a href="https://github.com/kazimmt">@kazimmt</a>
+</p>
+
+<p>
+<i>Feature Enhancements:</i><br> 
+<b>Sajjad Hossain Soykot</b><br/>
+  <a href="https://github.com/SajjadHossainSoykot">@SajjadHossainSoykot</a>
 </p>
 
 ---

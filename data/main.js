@@ -1,3 +1,25 @@
+        // Print Handler function for reliability
+
+        function handlePrint() {
+
+            // Update site URL before printing
+
+            const siteUrl = window.location.hostname || "kazimmt.github.io/sehri-iftar";
+
+            document.getElementById('site-url-placeholder').textContent = siteUrl;
+
+            
+
+            // Short delay to ensure DOM updates before browser takes control
+
+            setTimeout(() => {
+
+                window.print();
+
+            }, 100);
+
+        }
+
         let countdownInterval = null;
         let processedDataGlobal = null;
 

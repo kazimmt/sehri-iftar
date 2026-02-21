@@ -1,161 +1,452 @@
-        @font-face {
-            font-family: 'Kalpurush';
-            src: url('https://github.com/mahtab-alam/Kalpurush-Font/raw/main/kalpurush.ttf') format('truetype');
-            font-display: swap;
-        }
+@font-face {
+	font-family: 'Kalpurush';
+	src: url('https://github.com/mahtab-alam/Kalpurush-Font/raw/main/kalpurush.ttf') format('truetype');
+	font-display: swap;
+}
 
-        body {
-            font-family: 'Kalpurush', 'Tiro Bangla', 'Hind Siliguri', serif;
-            background-color: #f0fdf4;
-        }
+body {
+	font-family: 'Kalpurush', 'Tiro Bangla', 'Hind Siliguri', serif;
+	background-color: #f0fdf4;
+}
 
-        #bd-map path {
-            fill: #86efac;
-            stroke: #14532d;
-            stroke-width: 0.5;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        #bd-map path:hover { fill: #15803d; }
-        #bd-map path.active { fill: #166534; stroke: #fbbf24; stroke-width: 1.5; }
+#bd-map path {
+	fill: #86efac;
+	stroke: #14532d;
+	stroke-width: 0.5;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
 
+#bd-map path:hover {
+	fill: #15803d;
+}
 
-        #map-tooltip {
-            position: fixed;
-            display: none;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-            pointer-events: none;
-            z-index: 1000;
-            font-family: 'Kalpurush', sans-serif;
-        }
+#bd-map path.active {
+	fill: #166534;
+	stroke: #fbbf24;
+	stroke-width: 1.5;
+}
 
 
-        .fade-in { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-		
-		        
-        .countdown-box {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border: 1px solid #bfdbfe;
-        }
-		
-		.highlight-today {
-            background-color: #fefce8 !important; /* light yellow */
-            border-left: 4px solid #facc15 !important; /* blue indicator */
-            position: relative;
-        }
+#map-tooltip {
+	position: fixed;
+	display: none;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-size: 14px;
+	pointer-events: none;
+	z-index: 1000;
+	font-family: 'Kalpurush', sans-serif;
+}
 
-        .custom-select-wrapper {
-            position: relative;
-            width: 100%;
-        }
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            max-height: 250px;
-            overflow-y: auto;
-            z-index: 100;
-            display: none;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            margin-top: 4px;
-        }
-        .search-item {
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-bottom: 1px solid #f3f4f6;
-            font-size: 16px;
-        }
-        .search-item:last-child { border-bottom: none; }
-        .search-item:hover {
-            background-color: #dcfce7;
-            color: #166534;
-            padding-left: 20px;
-        }
-        .dropdown-arrow {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            color: #166534;
-        }
 
-        /* Print Styles */
-        @media print {
-            @page {
-                size: A4;
-                margin: 0.5cm;
-            }
-            body { 
-                background-color: white !important; 
-                zoom: 90%; /* Scale content to 90% */
-                -moz-transform: scale(0.9); /* Firefox support */
-                -moz-transform-origin: 0 0;
-            }
-            
-            /* Hide non-essential sections during print */
-            header, footer, .no-print, #today-panel, .bg-white.p-2.rounded-xl, .bg-white.p-5.rounded-xl { 
-                display: none !important; 
-            }
-            
-            #printable-area {
-                position: static !important;
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-			
-            
-            .bg-gradient-to-r { 
-                background: #15803d !important; 
-                color: white !important;
-                padding: 10px !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-			
-			.highlight-today {
-				border-left: none !important;
-				background-color: transparent !important;
-				-webkit-print-color-adjust: exact;
-			}
-			
-            table { 
-                width: 100% !important; 
-                border: 1px solid #ccc !important; 
-                font-size: 11px !important; 
-            }
-            
-            th, td { 
-                border: 1px solid #ddd !important; 
-                padding: 3px 5px !important; 
-                color: black !important;
-                line-height: 1.1 !important;
-            }
-            
-            /* Ensure columns are visible */
-            th, td { display: table-cell !important; }
+.fade-in {
+	animation: fadeIn 0.4s ease-out;
+}
 
-            #print-footer { 
-                display: block !important; 
-                text-align: center; 
-                margin-top: 10px; 
-                font-size: 9px; 
-                border-top: 1px dashed #666; 
-                padding-top: 5px;
-            }
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 
-            h2 { font-size: 20px !important; margin: 0 !important; }
-            p.opacity-90 { font-size: 12px !important; }
-        }
-        #print-footer { display: none; }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+.countdown-box {
+	background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+	border: 1px solid #bfdbfe;
+}
+
+.highlight-today {
+	background-color: #fefce8 !important;
+	/* light yellow */
+	border-left: 4px solid #facc15 !important;
+	/* blue indicator */
+	position: relative;
+}
+
+.custom-select-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.search-results {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background: white;
+	border: 1px solid #d1d5db;
+	border-radius: 0.5rem;
+	max-height: 250px;
+	overflow-y: auto;
+	z-index: 100;
+	display: none;
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+	margin-top: 4px;
+}
+
+.search-item {
+	padding: 10px 15px;
+	cursor: pointer;
+	transition: all 0.2s;
+	border-bottom: 1px solid #f3f4f6;
+	font-size: 16px;
+}
+
+.search-item:last-child {
+	border-bottom: none;
+}
+
+.search-item:hover {
+	background-color: #dcfce7;
+	color: #166534;
+	padding-left: 20px;
+}
+
+.dropdown-arrow {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: #166534;
+}
+
+/* Print Styles */
+@media print {
+	@page {
+		size: A4;
+		margin: 0.5cm;
+	}
+
+	body {
+		background-color: white !important;
+		zoom: 90%;
+		/* Scale content to 90% */
+		-moz-transform: scale(0.9);
+		/* Firefox support */
+		-moz-transform-origin: 0 0;
+	}
+
+	/* Hide non-essential sections during print */
+	header,
+	footer,
+	.no-print,
+	#today-panel,
+	.bg-white.p-2.rounded-xl,
+	.bg-white.p-5.rounded-xl {
+		display: none !important;
+	}
+
+	#printable-area {
+		position: static !important;
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+
+	.bg-gradient-to-r {
+		background: #15803d !important;
+		color: white !important;
+		padding: 10px !important;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+
+	.highlight-today {
+		border-left: none !important;
+		background-color: transparent !important;
+		-webkit-print-color-adjust: exact;
+	}
+
+	table {
+		width: 100% !important;
+		border: 1px solid #ccc !important;
+		font-size: 11px !important;
+	}
+
+	th,
+	td {
+		border: 1px solid #ddd !important;
+		padding: 3px 5px !important;
+		color: black !important;
+		line-height: 1.1 !important;
+	}
+
+	/* Ensure columns are visible */
+	th,
+	td {
+		display: table-cell !important;
+	}
+
+	#print-footer {
+		display: block !important;
+		text-align: center;
+		margin-top: 10px;
+		font-size: 9px;
+		border-top: 1px dashed #666;
+		padding-top: 5px;
+	}
+
+	h2 {
+		font-size: 20px !important;
+		margin: 0 !important;
+	}
+
+	p.opacity-90 {
+		font-size: 12px !important;
+	}
+}
+
+#print-footer {
+	display: none;
+}
+
+/* Floating Button Styles */
+.floating-toggle {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #15803d;
+	/* আপনার সাইটের থিম কালার */
+	color: white;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	z-index: 1000;
+	transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.floating-toggle:hover {
+	transform: scale(1.1);
+}
+
+.floating-toggle:active {
+	transform: scale(0.9);
+}
+
+/* আইকন কন্ট্রোল */
+.icon-moon {
+	display: none;
+}
+
+.icon-sun {
+	display: block;
+}
+
+/* ডার্ক মোড একটিভ হলে আইকন চেঞ্জ */
+body.dark-mode .icon-sun {
+	display: none;
+}
+
+body.dark-mode .icon-moon {
+	display: block;
+}
+
+body.dark-mode .floating-toggle {
+	background: #1e293b;
+	/* ডার্ক মোডে বাটনের ব্যাকগ্রাউন্ড */
+	border: 1px solid #334155;
+}
+
+/* =============================================
+   DARK MODE - OPTIMIZED REFINED THEME
+   ============================================= */
+
+/* ১. মেইন বডি এবং কমন ব্যাকগ্রাউন্ড */
+body.dark-mode {
+	background-color: #020617 !important;
+	color: #f1f5f9;
+}
+
+/* সব সাদা এবং হালকা গ্রিন/ব্লু ব্যাকগ্রাউন্ড ডার্ক করা */
+body.dark-mode .bg-white,
+body.dark-mode .bg-gray-50,
+body.dark-mode .bg-green-50,
+body.dark-mode .bg-blue-50,
+body.dark-mode .bg-blue-100,
+body.dark-mode .rounded-xl,
+body.dark-mode #today-panel {
+	background-color: #0f172a !important;
+	border: 1px solid #1e293b !important;
+	color: #e2e8f0;
+}
+
+/* ২. হেডার এবং স্ট্যাটাস বার */
+body.dark-mode .bg-gradient-to-r {
+	background: linear-gradient(to right, #064e3b, #022c22) !important;
+}
+
+body.dark-mode .bg-green-800 {
+	background-color: #064e3b !important;
+}
+
+/* ৩. ম্যাপ সেকশন (Map Visual Fix) */
+body.dark-mode .bg-green-50.p-2.ring-1,
+body.dark-mode .relative.w-full.h-\[400px\].bg-green-50 {
+	background-color: #020617 !important;
+	border: 1px solid #1e293b !important;
+}
+
+body.dark-mode #bd-map path {
+	fill: #1e293b;
+	stroke: #334155;
+}
+
+body.dark-mode #bd-map path:hover {
+	fill: #10b981;
+}
+
+body.dark-mode #bd-map path.active {
+	fill: #059669;
+	stroke: #fbbf24;
+}
+
+/* ৪. কাউন্টডাউন প্যানেল (Countdown Section) */
+body.dark-mode .countdown-box {
+	background: linear-gradient(135deg, #0f172a 0%, #020617 100%) !important;
+	border: 1px solid #334155 !important;
+}
+
+body.dark-mode .grid.grid-cols-3 .bg-white,
+
+body.dark-mode .grid.grid-cols-3 .bg-blue-50,
+
+body.dark-mode .grid.grid-cols-3 .bg-orange-50 {
+
+	background-color: #0f172a !important;
+
+	border: 1px solid #334155 !important;
+
+}
+
+body.dark-mode .bg-white.rounded-t-2xl,
+body.dark-mode .bg-blue-50.rounded-2xl {
+	background-color: #1e293b !important;
+}
+
+body.dark-mode #countdown-timer {
+	color: #60a5fa !important;
+	text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+/* ৫. টেবিল এবং রো (Table Styling) */
+body.dark-mode table {
+	border-color: #1e293b;
+}
+
+body.dark-mode th {
+	background-color: #1e293b !important;
+	color: #94a3b8 !important;
+	border-color: #334155 !important;
+}
+
+body.dark-mode td {
+	border-color: #1e293b !important;
+	color: #cbd5e1;
+}
+
+body.dark-mode tr.bg-white {
+	background-color: #0f172a !important;
+}
+
+body.dark-mode tr.bg-green-50\/50 {
+	background-color: #1e293b44 !important;
+}
+
+/* হাইলাইট রো */
+body.dark-mode .highlight-today {
+	background-color: rgba(16, 185, 129, 0.15) !important;
+	border-left: 4px solid #10b981 !important;
+}
+
+/* ৬. সার্চ এবং ড্রপডাউন (Search Fix) */
+body.dark-mode input#district-search {
+	background-color: #020617 !important;
+	border: 1px solid #334155 !important;
+	color: #ffffff !important;
+}
+
+body.dark-mode .search-results {
+	background-color: #1e293b !important;
+	border: 1px solid #334155 !important;
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .search-item {
+	border-bottom: 1px solid #334155;
+	color: #cbd5e1;
+}
+
+body.dark-mode .search-item:hover {
+	background-color: #064e3b !important;
+	color: #4ade80 !important;
+}
+
+/* ৭. টেক্সট কালার অ্যাডজাস্টমেন্ট (Typography) */
+body.dark-mode .text-green-700,
+body.dark-mode .text-green-800,
+body.dark-mode .text-green-900 {
+	color: #4ade80 !important;
+}
+
+body.dark-mode .text-blue-700,
+body.dark-mode .text-blue-800,
+body.dark-mode .text-blue-900 {
+	color: #60a5fa !important;
+}
+
+body.dark-mode .text-orange-700 {
+	color: #fbbf24 !important;
+}
+
+body.dark-mode .text-gray-700,
+body.dark-mode .text-gray-600 {
+	color: #94a3b8 !important;
+}
+
+/* ৮. বর্ডার, রিং এবং টুলটিপ */
+body.dark-mode .ring-green-200,
+body.dark-mode .border-green-100,
+body.dark-mode .border-green-200 {
+	border-color: #334155 !important;
+	--tw-ring-color: #334155 !important;
+}
+
+body.dark-mode #map-tooltip {
+	background: #0f172a !important;
+	border: 1px solid #334155 !important;
+	color: #fff !important;
+}
+
+body.dark-mode footer,
+body.dark-mode .footer-section {
+	background: linear-gradient(to right, #064e3b, #022c22) !important;
+	/* হেডারের ডার্ক গ্রেডিয়েন্ট */
+	border-top: 1px solid #1e293b !important;
+}
+
+body.dark-mode footer p,
+body.dark-mode footer a {
+	color: #cbd5e1 !important;
+}
+
+body.dark-mode footer a:hover {
+	color: #4ade80 !important;
+}

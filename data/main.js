@@ -119,45 +119,60 @@
             countdownInterval = setInterval(update, 1000);
         }
 
-        function renderTable(key, data) {
-            const district = data[key];
-            if(!district) return;
-            document.getElementById('selected-district-name').textContent = district.name;
-            document.getElementById('district-search').value = district.name;
-            const tableBody = document.getElementById('timetable-body');
-            tableBody.innerHTML = '';
+		function renderTable(key, data) {
+			const district = data[key];
+			if(!district) return;
 
-            district.timetable.forEach((row, index) => {
-                const tr = document.createElement('tr');
-                tr.className = `${index % 2 === 0 ? 'bg-white' : 'bg-green-50/50'} fade-in border-b border-green-100`;
-                tr.innerHTML = `
-                    <td class="p-3 md:p-4 text-center font-bold text-green-700 border-r">${toBengaliNumber(row.day)}</td>
-                    <td class="p-3 md:p-4 text-gray-700 border-r text-sm">${row.dateStr}</td>
-                    <td class="p-3 md:p-4 text-center font-bold text-green-900 bg-green-100/30 border-r">${row.sahri}</td>
-                    <td class="p-3 md:p-4 text-center text-gray-600 border-r hidden md:table-cell">${row.fajr}</td>
-                    <td class="p-3 md:p-4 text-center">
-                        <span class="font-bold text-orange-700">${row.iftar}</span>
-                    </td>
-                `;
-                tableBody.appendChild(tr);
-            });
+			document.getElementById('selected-district-name').textContent = district.name;
+			document.getElementById('district-search').value = district.name;
+			const tableBody = document.getElementById('timetable-body');
+			tableBody.innerHTML = '';
 
-            const now = new Date();
-            const todayRow = district.timetable.find(r => r.fullDate.toDateString() === now.toDateString());
-            if (todayRow) {
-                document.getElementById('today-sahri').textContent = todayRow.sahri;
-                document.getElementById('today-fajr').textContent = todayRow.fajr;
-                document.getElementById('today-iftar').textContent = todayRow.iftar;
-                document.getElementById('ramadan-day-status').textContent = `আজকের রোজা: ${toBengaliNumber(todayRow.day)} তম`;
-            }
+			// Get today's date string once for comparison
+			const todayStr = new Date().toDateString();
 
-            document.querySelectorAll('#bd-map path').forEach(p => p.classList.remove('active'));
-            const path = document.getElementById(key);
-            if(path) path.classList.add('active');
+			district.timetable.forEach((row, index) => {
+				const tr = document.createElement('tr');
+				
+				// 1. Identify if this row is today
+				const isToday = row.fullDate.toDateString() === todayStr;
 
-            startCountdown(district);
-        }
+				// 2. Define classes: if today, use yellow. If not, use your original green/white toggle.
+				let rowClass = isToday 
+					? 'highlight-today' 
+					: (index % 2 === 0 ? 'bg-white' : 'bg-green-50/50');
 
+				tr.className = `${rowClass} fade-in border-b border-green-100`;
+				
+				tr.innerHTML = `
+					<td class="p-3 md:p-4 text-center font-bold text-green-700 border-r">${toBengaliNumber(row.day)}</td>
+					<td class="p-3 md:p-4 text-gray-700 border-r text-sm">${row.dateStr}</td>
+					<td class="p-3 md:p-4 text-center font-bold text-green-900 bg-green-100/30 border-r">${row.sahri}</td>
+					<td class="p-3 md:p-4 text-center text-gray-600 border-r hidden md:table-cell">${row.fajr}</td>
+					<td class="p-3 md:p-4 text-center">
+						<span class="font-bold text-orange-700">${row.iftar}</span>
+					</td>
+				`;
+				tableBody.appendChild(tr);
+			});
+
+			// Keep your existing status update logic below the loop
+			const now = new Date();
+			const todayRow = district.timetable.find(r => r.fullDate.toDateString() === now.toDateString());
+			if (todayRow) {
+				document.getElementById('today-sahri').textContent = todayRow.sahri;
+				document.getElementById('today-fajr').textContent = todayRow.fajr;
+				document.getElementById('today-iftar').textContent = todayRow.iftar;
+				document.getElementById('ramadan-day-status').textContent = `আজকের রোজা: ${toBengaliNumber(todayRow.day)} তম`;
+			}
+
+			document.querySelectorAll('#bd-map path').forEach(p => p.classList.remove('active'));
+			const path = document.getElementById(key);
+			if(path) path.classList.add('active');
+
+			startCountdown(district);
+		}
+		
         function setupSelection(data) {
             const searchInput = document.getElementById('district-search');
             const searchResults = document.getElementById('search-results');
@@ -251,6 +266,8 @@
                 });
             });
         }
+		
+		
         document.addEventListener('DOMContentLoaded', () => {
             processedDataGlobal = getProcessedData();
             setupSelection(processedDataGlobal);

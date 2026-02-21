@@ -100,7 +100,7 @@
                         if (tomRow) {
                             const [tsH, tsM] = toEnglishNumber(tomRow.sahri).split(':').map(Number);
                             targetTime = new Date(tomorrow); targetTime.setHours(tsH, tsM, 0);
-                            eventLabel = "সাহরী শেষ"; displayTime = tomRow.sahri + " AM";
+                            eventLabel = "আগামী সাহরী"; displayTime = tomRow.sahri + " AM";
                         }
                     }
                 }
@@ -193,10 +193,16 @@
                 searchResults.style.display = 'block';
             }
 
+			
             searchInput.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showAll();
-            });
+			e.stopPropagation();
+
+			if (searchResults.style.display === 'block') {
+				searchResults.style.display = 'none';
+			} else {
+				showAll();
+			}
+			});
 
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.trim().toLowerCase();
@@ -274,6 +280,5 @@
             updateHeaderDates();
             renderTable('dhaka', processedDataGlobal);
             setupMapInteractions();
-
 
         });

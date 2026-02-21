@@ -1,3 +1,29 @@
+        // Reliability improved Print Handler
+
+        function handlePrint() {
+
+            try {
+
+                const siteUrl = window.location.hostname || "kazimmt.github.io/sehri-iftar";
+
+                const placeholder = document.getElementById('site-url-placeholder');
+
+                if (placeholder) placeholder.textContent = siteUrl;
+
+                
+
+                window.focus();
+
+                window.print();
+
+            } catch (error) {
+
+                console.error("প্রিন্ট করতে সমস্যা হচ্ছে:", error);
+
+            }
+
+        }
+
         let countdownInterval = null;
         let processedDataGlobal = null;
 

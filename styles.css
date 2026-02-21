@@ -83,3 +83,66 @@
             pointer-events: none;
             color: #166534;
         }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0.5cm;
+            }
+            body { 
+                background-color: white !important; 
+                zoom: 90%; /* Scale content to 90% */
+                -moz-transform: scale(0.9); /* Firefox support */
+                -moz-transform-origin: 0 0;
+            }
+            
+            /* Hide non-essential sections during print */
+            header, footer, .no-print, #today-panel, .bg-white.p-2.rounded-xl, .bg-white.p-5.rounded-xl { 
+                display: none !important; 
+            }
+            
+            #printable-area {
+                position: static !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .bg-gradient-to-r { 
+                background: #15803d !important; 
+                color: white !important;
+                padding: 10px !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            table { 
+                width: 100% !important; 
+                border: 1px solid #ccc !important; 
+                font-size: 11px !important; 
+            }
+            
+            th, td { 
+                border: 1px solid #ddd !important; 
+                padding: 3px 5px !important; 
+                color: black !important;
+                line-height: 1.1 !important;
+            }
+            
+            /* Ensure columns are visible */
+            th, td { display: table-cell !important; }
+
+            #print-footer { 
+                display: block !important; 
+                text-align: center; 
+                margin-top: 10px; 
+                font-size: 9px; 
+                border-top: 1px dashed #666; 
+                padding-top: 5px;
+            }
+
+            h2 { font-size: 20px !important; margin: 0 !important; }
+            p.opacity-90 { font-size: 12px !important; }
+        }
+        #print-footer { display: none; }

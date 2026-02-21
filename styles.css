@@ -392,7 +392,9 @@ body.dark-mode .text-blue-900 {
 	color: #60a5fa !important;
 }
 
-body.dark-mode .text-orange-700 {
+body.dark-mode .text-orange-700,
+body.dark-mode .text-orange-800,
+body.dark-mode .text-orange-900 {
 	color: #fbbf24 !important;
 }
 

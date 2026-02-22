@@ -92,7 +92,7 @@ function startCountdown(districtData) {
          if (now < sahriTime) {
             targetTime = sahriTime;
             eventLabel = "সাহরী শেষ";
-            displayTime = "ভোর " + todayRow.sahri + " AM";
+            displayTime = "ভোর " + todayRow.sahri + " টা";
          } else if (now < iftarTime) {
             targetTime = iftarTime;
             eventLabel = "ইফতার";
@@ -293,4 +293,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
    const savedDistrict = localStorage.getItem('selectedDistrict');
    renderTable((savedDistrict && processedDataGlobal[savedDistrict]) ? savedDistrict : 'dhaka', processedDataGlobal);
+
 });

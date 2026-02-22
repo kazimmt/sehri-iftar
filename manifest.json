@@ -1,6 +1,7 @@
 {
   "name": "Sehri & Iftar Timetable 2026",
   "short_name": "Ramadan Timetable",
+  "description": "Daily Sehri and Iftar timings with live countdown for Bangladesh.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",

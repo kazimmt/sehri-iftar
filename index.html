@@ -36,7 +36,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-6 flex-grow">
+    <main id="dua-content-page" class="container mx-auto px-4 py-6 flex-grow">
         <div id="tooltip" class="map-tooltip"></div>
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -231,8 +231,26 @@
         </div>
     </main>
 
+	<div id="settings-section" style="display:none; padding: 20px;">
+		<h3 style="font-size: 20px; font-weight: bold; margin-bottom: 20px; color: #15803d;">Settings & Info</h3>
+		
+		<div class="settings-card" style="background: white; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+			<span style="font-size: 16px;">ডার্ক মোড</span>
+			<label class="switch">
+				<input type="checkbox" id="darkModeToggleMobile" onclick="toggleDarkMode()">
+				<span class="slider round"></span>
+			</label>
+		</div>
+
+		<div class="settings-card" style="background: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+			<p style="margin: 0; font-weight: bold; color: #333;">App Information</p>
+			<p style="margin: 5px 0 0; font-size: 14px; color: #666;">Developed by: Kazi Tuhin</p>
+			<p style="margin: 2px 0 0; font-size: 14px; color: #666;">Ramadan Timetable 2026</p>
+		</div>
+	</div>
+
     <!-- Footer Section -->
-    <footer class="bg-green-900 text-white mt-12">
+    <footer id="dua-content" class="bg-green-900 text-white mt-12">
         <div class="container mx-auto px-4 py-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Sahri Prayers -->
@@ -273,6 +291,25 @@
 				</button>
         </div>
     </footer>
+
+	<nav class="mobile-nav">
+		<div class="nav-item active" onclick="showSection('home', this)">
+			<i class="fas fa-home"></i>
+			<span>Home</span>
+		</div>
+		<div class="nav-item" onclick="showSection('timetable', this)">
+			<i class="fas fa-calendar-alt"></i>
+			<span>Timetable</span>
+		</div>
+		<div class="nav-item" onclick="showSection('dua', this)">
+			<i class="fas fa-praying-hands"></i>
+			<span>Dua</span>
+		</div>
+		<div class="nav-item" onclick="showSection('settings', this)">
+			<i class="fas fa-cog"></i>
+			<span>Settings</span>
+		</div>
+	</nav>
 
     <script src="data/main.js"></script>
 	<script src="data/timetable.js"></script>

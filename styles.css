@@ -436,3 +436,138 @@ body.dark-mode footer a:hover {
 body.dark-mode .bg-green-100\/30 {
 	background: inherit;
 }
+
+/* মোবাইল অ্যাপ ইন্টারফেস */
+/* ১. এস্কেপ ক্যারেক্টার ফিক্স (এটি মোবাইলের সব সমস্যার সমাধান করবে) */
+@media (max-width: 768px) {
+    /* কোলনের আগে অবশ্যই \ দিতে হবে নাহলে ক্লাস কাজ করবে না */
+    .lg\:col-span-4, 
+    .lg\:col-span-8, 
+    footer, 
+    #settings-section {
+        display: none !important;
+    }
+
+    body { padding-bottom: 80px; }
+
+    header { 
+        position: sticky !important; 
+        top: 0; 
+        z-index: 1000; 
+        background: white; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    }
+
+    /* বটম নেভিগেশন বার */
+    .mobile-nav {
+        position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
+        background: #ffffff; display: flex; justify-content: space-around;
+        align-items: center; border-top: 1px solid #eee; z-index: 9999;
+    }
+
+    /* ডার্ক মোডে নেভিগেশন বার ফিক্স */
+    body.dark-mode .mobile-nav {
+        background: #0f172a;
+        border-top: 1px solid #1e293b;
+    }
+
+    .nav-item {
+        display: flex; flex-direction: column; align-items: center;
+        color: #777; font-size: 11px; cursor: pointer; transition: 0.3s;
+    }
+
+    .nav-item i { font-size: 22px; margin-bottom: 4px; }
+
+    .nav-item.active { color: #15803d; font-weight: bold; }
+    body.dark-mode .nav-item.active { color: #4ade80; }
+
+    /* ডার্ক মোড সেটিংস সুইচ */
+    .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+    .switch input { display: none; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .slider { background-color: #15803d; }
+    input:checked + .slider:before { transform: translateX(22px); }
+}
+
+/* ২. ফেড-ইন এনিমেশন ফিক্স */
+.fade-in-view {
+    display: block !important;
+    animation: mobileFadeIn 0.4s ease-out forwards;
+}
+
+/* যদি সেকশনটি গ্রিড বা ফ্লেক্স হয় তবে এটি নিশ্চিত করবে */
+.lg\:col-span-4.fade-in-view, .lg\:col-span-8.fade-in-view {
+    display: block !important;
+}
+
+@keyframes mobileFadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ৩. ডার্ক মোডে সেটিংস কার্ড ফিক্স */
+body.dark-mode .settings-card {
+    background: #1e293b !important;
+    color: white !important;
+    border: 1px solid #334155 !important;
+}
+
+/* ৪. ডেস্কটপে নেভিগেশন হাইড */
+@media (min-width: 769px) { .mobile-nav { display: none; } }
+
+@media (max-width: 768px) {
+    /* দুয়া সেকশনে যখন থাকবে তখন ফুটারের নিচের বর্ডার এবং কপিরাইট হাইড রাখা */
+    footer .border-t.border-green-800 {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* দুয়া সেকশন যখন একটিভ থাকবে */
+    #dua-content.fade-in-view {
+        display: block !important;
+        margin-top: 0 !important; /* উপরের গ্যাপ বন্ধ করা */
+        min-height: calc(100vh - 140px); /* পুরো স্ক্রিন কভার করা */
+        background-color: #064e3b !important;
+		padding: 0;
+    }
+	
+    #dua-content-page.py-6 {
+		padding: 0;
+    }
+	
+	#dark-mode-toggle {
+        display: none !important;
+    }
+	
+
+    /* ফুটারের উপরের ডিফল্ট মার্জিন বন্ধ করা */
+    footer {
+        margin-top: 0 !important;
+        background-color: #064e3b !important;
+    }
+
+    /* কপিরাইট অংশ হাইড করা (শুধুমাত্র দোয়ার জন্য) */
+    .dua-active-mode #footer-copyright {
+        display: none !important;
+    }
+}
+
+/* ডার্ক মোডে সেটিংস পেজের App info সেকশনের টেক্সট কালার */
+body.dark-mode #settings-section .text-gray-700,
+body.dark-mode #settings-section .text-gray-600,
+body.dark-mode #settings-section h3,
+body.dark-mode #settings-section p {
+    color: #e2e8f0 !important; /* হালকা সাদা/ধূসর কালার */
+}
+
+body.dark-mode #settings-section .settings-card {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+
+/* ভার্সন বা ছোট টেক্সটগুলোর জন্য */
+body.dark-mode #settings-section .text-sm {
+    color: #94a3b8 !important;
+}

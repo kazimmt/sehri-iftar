@@ -220,6 +220,9 @@ function renderTable(key, data) {
    if (path) path.classList.add('active');
 
    startCountdown(district);
+   if (todayRow) { 
+		setupDailyPush(todayRow); 
+	}
 }
 
 // ৬. সিলেকশন এবং অন্যান্য সেটআপ
@@ -387,3 +390,25 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection('home', homeBtn);
     }
 });
+
+// ৮. পুশ নোটিফিকেশন সেটআপ ফাংশন
+function setupDailyPush(todayRow) {
+    if (!('serviceWorker' in navigator) || !('Notification' in window)) return;
+
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            navigator.serviceWorker.ready.then(registration => {
+                const districtName = document.getElementById('selected-district-name').textContent;
+                // সার্ভিস ওয়ার্কারে মেসেজ পাঠানো
+                if (registration.active) {
+                    registration.active.postMessage({
+                        type: 'SCHEDULE_NOTIFICATIONS',
+                        sahri: todayRow.sahri,
+                        iftar: todayRow.iftar,
+                        district: districtName
+                    });
+                }
+            });
+        }
+    });
+}

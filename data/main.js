@@ -228,29 +228,64 @@ function setupSelection(data) {
    const searchResults = document.getElementById('search-results');
    if(!searchInput || !searchResults) return;
 
-   searchInput.addEventListener('click', (e) => {
+   // ইনপুট বক্সে ক্লিক বা টাচ করলে রেজাল্ট দেখাবে
+   const showFullList = (e) => {
       e.stopPropagation();
-      if (searchResults.style.display === 'block') {
-          searchResults.style.display = 'none';
-      } else {
-          searchResults.innerHTML = '';
-          Object.keys(data).forEach(key => {
-             const div = document.createElement('div');
-             div.className = 'search-item';
-             div.textContent = data[key].name;
-             div.onclick = (e) => {
-                e.stopPropagation();
-                renderTable(key, data);
-                searchResults.style.display = 'none';
-             };
-             searchResults.appendChild(div);
-          });
-          searchResults.style.display = 'block';
-      }
+      const query = searchInput.value.trim().toLowerCase();
+      renderFilteredResults(query);
+      searchResults.style.display = 'block';
+   };
+
+   searchInput.addEventListener('click', showFullList);
+   searchInput.addEventListener('focus', showFullList);
+
+   // সার্চ বক্সে টাইপ করলে ফিল্টার হবে
+   searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      renderFilteredResults(query);
+      searchResults.style.display = 'block';
    });
 
-   document.addEventListener('click', () => {
-      searchResults.style.display = 'none';
+   function renderFilteredResults(query) {
+      searchResults.innerHTML = '';
+      const filteredKeys = Object.keys(data).filter(key => 
+         data[key].name.toLowerCase().includes(query) || key.includes(query)
+      );
+
+      if (filteredKeys.length > 0) {
+         filteredKeys.forEach(key => {
+            const div = document.createElement('div');
+            div.className = 'search-item';
+            div.textContent = data[key].name;
+            
+            // মোবাইল এবং পিসি উভয়ের জন্য ইভেন্ট হ্যান্ডলার
+            const selectDistrict = (e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               renderTable(key, data);
+               searchResults.style.display = 'none';
+               searchInput.value = data[key].name;
+               searchInput.blur(); // কিবোর্ড হাইড করার জন্য
+            };
+
+            div.addEventListener('mousedown', selectDistrict); // পিসির জন্য দ্রুত কাজ করবে
+            div.addEventListener('touchstart', selectDistrict, {passive: false}); // মোবাইলের জন্য
+            
+            searchResults.appendChild(div);
+         });
+      } else {
+         const div = document.createElement('div');
+         div.className = 'search-item text-gray-400 italic pointer-events-none';
+         div.textContent = 'কোনো জেলা পাওয়া যায়নি';
+         searchResults.appendChild(div);
+      }
+   }
+
+   // বাইরে ক্লিক করলে ড্রপডাউন বন্ধ হবে
+   document.addEventListener('click', (e) => {
+      if (e.target !== searchInput) {
+         searchResults.style.display = 'none';
+      }
    });
 }
 

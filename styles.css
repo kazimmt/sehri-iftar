@@ -448,6 +448,13 @@ body.dark-mode .bg-green-100\/30 {
         display: none !important;
     }
 
+	/* মোবাইলে প্রিন্ট বাটন হাইড করা */
+    .print-button, 
+    button[onclick="handlePrint()"], 
+    #print-btn { 
+        display: none !important; 
+    }
+
     body { padding-bottom: 80px; }
 
     header { 
@@ -528,8 +535,6 @@ body.dark-mode .settings-card {
     #dua-content.fade-in-view {
         display: block !important;
         margin-top: 0 !important; /* উপরের গ্যাপ বন্ধ করা */
-        min-height: calc(100vh - 140px); /* পুরো স্ক্রিন কভার করা */
-        background-color: #064e3b !important;
 		padding: 0;
     }
 	
@@ -557,9 +562,12 @@ body.dark-mode .settings-card {
 /* ডার্ক মোডে সেটিংস পেজের App info সেকশনের টেক্সট কালার */
 body.dark-mode #settings-section .text-gray-700,
 body.dark-mode #settings-section .text-gray-600,
-body.dark-mode #settings-section h3,
 body.dark-mode #settings-section p {
     color: #e2e8f0 !important; /* হালকা সাদা/ধূসর কালার */
+}
+
+body.dark-mode #settings-section h3 {
+    color: rgb(234 179 8 / var(--tw-text-opacity, 1)) !important; /* হলুদ */
 }
 
 body.dark-mode #settings-section .settings-card {
@@ -570,4 +578,34 @@ body.dark-mode #settings-section .settings-card {
 /* ভার্সন বা ছোট টেক্সটগুলোর জন্য */
 body.dark-mode #settings-section .text-sm {
     color: #94a3b8 !important;
+}
+
+/* ডার্ক মুডে দুয়া পেজের কালার */
+body.dark-mode #dua-content .dua-card {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+}
+/* ভার্সন বা ছোট টেক্সটগুলোর জন্য */
+body.dark-mode #dua-content .text-sm {
+    color: #94a3b8 !important;
+}
+
+/* ডার্ক মোডে দুয়া কার্ড ফিক্স */
+body.dark-mode .dua-card {
+    background: #1e293b !important;
+    color: white !important;
+    border: 1px solid #334155 !important;
+}
+
+/* ডার্ক মোডে দুয়া পেজের টেক্সট কালার */
+body.dark-mode #dua-content .text-gray-700,
+body.dark-mode #dua-content .text-gray-600,
+body.dark-mode #dua-content li,
+body.dark-mode #dua-content p {
+    color: #e2e8f0 !important; /* হালকা সাদা/ধূসর কালার */
+}
+
+/* ডার্ক মোডে দুয়া পেজের টাইটেল কালার */
+body.dark-mode #dua-content h3{
+    color: rgb(234 179 8 / var(--tw-text-opacity, 1)) !important; /* হলুদ */
 }

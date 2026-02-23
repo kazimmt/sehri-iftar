@@ -503,6 +503,14 @@ body.dark-mode .bg-green-100\/30 {
     .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
     input:checked + .slider { background-color: #15803d; }
     input:checked + .slider:before { transform: translateX(22px); }
+	
+	.font-arabic, 
+    body.dark-mode .font-arabic {
+        display: block !important;
+        width: 100% !important;
+        text-align: right !important;
+        direction: rtl !important;
+    }
 }
 
 /* ২. ফেড-ইন এনিমেশন ফিক্স */
@@ -648,3 +656,4 @@ body.dark-mode .font-arabic {
     text-align: right !important;
     direction: rtl !important;
 }
+

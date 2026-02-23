@@ -632,23 +632,19 @@ body.dark-mode #dua-content h3{
 .font-arabic {
     font-family: 'indopak' !important;
     font-weight: normal;
-    line-height: 1rem;
+    line-height: 1.5rem;
     direction: rtl !important;
     text-align: right !important;
-    unicode-range: U+0600-06FF;
-    unicode-bidi: isolate;
-    display: inline;
+    display: block;
+    width: 100%;
 }
 
-/* Night Mode for Arabic Fonts */
+/* Night Mode for Arabic font */
 body.dark-mode .font-arabic {
     color: white;
     font-family: 'indopak' !important;
-    font-weight: normal;
-    line-height: 1rem;
-    direction: rtl !important;
+    display: block;
+    width: 100%;
     text-align: right !important;
-    unicode-range: U+0600-06FF;
-    unicode-bidi: isolate;
-    display: inline;
+    direction: rtl !important;
 }

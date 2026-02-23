@@ -578,6 +578,7 @@ body.dark-mode .settings-card {
 /* ডার্ক মোডে সেটিংস পেজের App info সেকশনের টেক্সট কালার */
 body.dark-mode #settings-section .text-gray-700,
 body.dark-mode #settings-section .text-gray-600,
+body.dark-mode #settings-section li,
 body.dark-mode #settings-section p {
     color: #e2e8f0 !important; /* হালকা সাদা/ধূসর কালার */
 }
@@ -656,4 +657,3 @@ body.dark-mode .font-arabic {
     text-align: right !important;
     direction: rtl !important;
 }
-

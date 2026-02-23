@@ -4,6 +4,14 @@
 	font-display: swap;
 }
 
+@font-face {
+    font-family: 'indopak';
+    src: url('fonts/AlQuranIndoPakbyQuranWBW.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
 	font-family: 'Kalpurush', 'Tiro Bangla', 'Hind Siliguri', serif;
 	background-color: #f0fdf4;
@@ -608,4 +616,39 @@ body.dark-mode #dua-content p {
 /* ডার্ক মোডে দুয়া পেজের টাইটেল কালার */
 body.dark-mode #dua-content h3{
     color: rgb(234 179 8 / var(--tw-text-opacity, 1)) !important; /* হলুদ */
+}
+
+/* Arabic Fonts */
+[dir="rtl"] {
+    font-family: 'indopak' !important;
+    font-size: 1.85rem;
+    line-height: 3rem;
+    font-weight: normal;
+    direction: rtl !important;
+    text-align: right !important;
+    unicode-range: U+0600-06FF;
+}
+
+.font-arabic {
+    font-family: 'indopak' !important;
+    font-weight: normal;
+    line-height: 1rem;
+    direction: rtl !important;
+    text-align: right !important;
+    unicode-range: U+0600-06FF;
+    unicode-bidi: isolate;
+    display: inline;
+}
+
+/* Night Mode for Arabic Fonts */
+body.dark-mode .font-arabic {
+    color: white;
+    font-family: 'indopak' !important;
+    font-weight: normal;
+    line-height: 1rem;
+    direction: rtl !important;
+    text-align: right !important;
+    unicode-range: U+0600-06FF;
+    unicode-bidi: isolate;
+    display: inline;
 }

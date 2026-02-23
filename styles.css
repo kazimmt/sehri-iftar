@@ -657,3 +657,8 @@ body.dark-mode .font-arabic {
     text-align: right !important;
     direction: rtl !important;
 }
+
+/* Prevent Zooming */
+button, a, body {
+    touch-action: manipulation;
+}

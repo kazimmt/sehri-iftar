@@ -5,7 +5,9 @@ const ASSETS = [
   './styles.css',
   './data/main.js',
   './data/timetable.js',
-  './manifest.json'
+  './manifest.json',
+  './fonts/Kalpurush.ttf',
+  './fonts/AlQuranIndoPakbyQuranWBW.woff'
 ];
 
 // ১. ভেরিয়েবল ডিক্লেয়ার করা
@@ -76,4 +78,5 @@ function toEng(n) { return String(n).replace(/[০-৯]/g, d => "0123456789" ["�
 function getIftar24(iftar) {
     const [h, m] = toEng(iftar).split(':').map(Number);
     return (h + 12).toString().padStart(2, '0') + ":" + m.toString().padStart(2, '0');
+
 }

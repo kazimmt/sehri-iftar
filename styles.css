@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Kalpurush';
-	src: url('https://github.com/mahtab-alam/Kalpurush-Font/raw/main/kalpurush.ttf') format('truetype');
+	src: url('fonts/Kalpurush.ttf') format('truetype');
 	font-display: swap;
 }
 
@@ -661,4 +661,5 @@ body.dark-mode .font-arabic {
 /* Prevent Zooming */
 button, a, body {
     touch-action: manipulation;
+
 }

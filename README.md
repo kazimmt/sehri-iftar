@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-    <a href="https://kazimmt.github.io/sehri-iftar/"><b>Live Demo</b></a><br>
-  🔗 <a href="https://kazimmt.github.io/sehri-iftar/"><b>https://kazimmt.github.io/sehri-iftar/</b></a>
+    <a href="https://ramadaan.pro.bd/"><b>Live Demo</b></a><br>
+  🔗 <a href="https://ramadaan.pro.bd/"><b>https://ramadaan.pro.bd/</b></a>
 
 </p>
 
